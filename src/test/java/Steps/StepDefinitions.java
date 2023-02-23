@@ -73,7 +73,7 @@ public class StepDefinitions {
     public void theUserLoggedInToFacebookWebsiteSuccessfully() {
         homePage=new HomePage(driver);
         Wait wait=new FluentWait(driver)
-                .withTimeout(20, TimeUnit.SECONDS)
+                .withTimeout(40, TimeUnit.SECONDS)
                 .pollingEvery(2,TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class);
         wait.until(ExpectedConditions.textMatches(
