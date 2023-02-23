@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(features = "src/test/resources/features",
         glue = "Steps", publish = true,
         plugin = {"pretty","json:target/Destination/cucumber.json"},
-        monochrome = true, tags = "@smoke")
+        monochrome = true)
 public class TestRunner extends AbstractTestNGCucumberTests {
 
 //    @Override
