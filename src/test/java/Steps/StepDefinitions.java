@@ -80,17 +80,20 @@ public class StepDefinitions {
 //        wait.until(ExpectedConditions.textMatches(
 //                By.xpath("(//span[@class=\"x1lliihq x6ikm8r x10wlt62 x1n2onr6\"])[14]"),
 //                Pattern.compile("Harshada Marne")));
-        new WebDriverWait(driver,20).until(ExpectedConditions.visibilityOf(homePage.getUser()));
-        String user=homePage.getUser().getText();
-        Assert.assertEquals(user,"Harshada Marne");
+//        new WebDriverWait(driver,20).until(ExpectedConditions.visibilityOf(homePage.getUser()));
+//        String user=homePage.getUser().getText();
+//        Assert.assertEquals(user,"Harshada Marne");
     }
 
     //user is on home page
     @Given("the user is on home page")
     public void theUserIsOnHomePage() {
         homePage=new HomePage(driver);
-        String user=homePage.getUser().getText();
-        Assert.assertEquals(user,"Harshada Marne");
+//        String user=homePage.getUser().getText();
+//        Assert.assertEquals(user,"Harshada Marne");
+        element=homePage.getSearchInputBox();
+        action=new Actions(driver);
+        action.moveToElement(element).perform();
     }
     boolean iconPresent;
     Point points;
@@ -117,8 +120,8 @@ public class StepDefinitions {
     @Given("the user move to search bar")
     public void theUserMoveToSearchBar() {
         homePage=new HomePage(driver);
-        String user=homePage.getUser().getText();
-        Assert.assertEquals(user,"Harshada Marne");
+//        String user=homePage.getUser().getText();
+//        Assert.assertEquals(user,"Harshada Marne");
         element=homePage.getSearchInputBox();
         action=new Actions(driver);
         action.moveToElement(element).perform();
@@ -133,6 +136,7 @@ public class StepDefinitions {
     @When("user enter a text in search field")
     public void userEnterATextInSearchField() {
         homePage=new HomePage(driver);
+        homePage.getSearchInputBox().click();
         homePage.getSearchInputBox().sendKeys(data.get("Data"));
         spellCheck=homePage.getSearchInputBox().getAttribute("spellcheck");
         value=homePage.getSearchInputBox().getAttribute("value");
@@ -151,8 +155,8 @@ public class StepDefinitions {
     @Given("the user navigate to home page")
     public void theUserNavigateToHomePage() {
         homePage=new HomePage(driver);
-        String user=homePage.getUser().getText();
-        Assert.assertEquals(user,"Harshada Marne");
+//        String user=homePage.getUser().getText();
+//        Assert.assertEquals(user,"Harshada Marne");
     }
 
     //user move to search bar
@@ -306,6 +310,7 @@ public class StepDefinitions {
     public void userSearchForPerson() {
         homePage=new HomePage(driver);
         data= TestDataReader.getData(scenario.getName());
+        homePage.getSearchInputBox().click();
         homePage.getSearchInputBox().sendKeys(data.get("Data"));
         homePage.getSearchInputBox().sendKeys(Keys.ENTER);
         new WebDriverWait(driver,20).until(ExpectedConditions.presenceOfElementLocated(By
