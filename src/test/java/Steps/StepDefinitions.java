@@ -70,15 +70,16 @@ public class StepDefinitions {
 
     //user logged in to facebook website successfully.
     @Then("the user logged in to facebook website successfully")
-    public void theUserLoggedInToFacebookWebsiteSuccessfully() {
+    public void theUserLoggedInToFacebookWebsiteSuccessfully() throws InterruptedException {
         homePage=new HomePage(driver);
-        Wait wait=new FluentWait(driver)
-                .withTimeout(40, TimeUnit.SECONDS)
-                .pollingEvery(2,TimeUnit.SECONDS)
-                .ignoring(NoSuchElementException.class);
-        wait.until(ExpectedConditions.textMatches(
-                By.xpath("(//span[@class=\"x1lliihq x6ikm8r x10wlt62 x1n2onr6\"])[14]"),
-                Pattern.compile("Harshada Marne")));
+//        Wait wait=new FluentWait(driver)
+//                .withTimeout(40, TimeUnit.SECONDS)
+//                .pollingEvery(2,TimeUnit.SECONDS)
+//                .ignoring(NoSuchElementException.class);
+//        wait.until(ExpectedConditions.textMatches(
+//                By.xpath("(//span[@class=\"x1lliihq x6ikm8r x10wlt62 x1n2onr6\"])[14]"),
+//                Pattern.compile("Harshada Marne")));
+        new WebDriverWait(driver,20).until(ExpectedConditions.visibilityOf(homePage.getUser()));
         String user=homePage.getUser().getText();
         Assert.assertEquals(user,"Harshada Marne");
     }
