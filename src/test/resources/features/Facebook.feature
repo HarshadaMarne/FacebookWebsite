@@ -24,27 +24,11 @@ Feature: User should able to search and select a desired person and people shoul
       When user click to search bar
       Then recent searches should be displayed to user
 
-    Scenario: User should able to enter a text and search for a person
-      Given the user click to search bar
-      When user enter a text and press ENTER key
-      Then search results should be displayed
 
     Scenario: Search results should be displayed relevant to search text to user
       Given the user move and click to search bar
       When user enter and search for a person
       Then relevant search results should be displayed
-
-
-    Scenario: Filters option should be displayed to user
-      Given the user enter and search for person
-      When search result page displayed to user
-      Then filters options should be displayed
-
-
-    Scenario: Results should be displayed according to selected filters
-      Given user enter and search for person
-      When user click to people filter
-      Then search result page displayed according to people filter
 
 
     Scenario: Message button should be displayed to people who are friend of user

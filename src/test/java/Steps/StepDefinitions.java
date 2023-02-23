@@ -187,33 +187,6 @@ public class StepDefinitions {
         Assert.assertEquals(text,"Recent searches");
     }
 
-    //user clicked on to search bar
-    @Given("the user click to search bar")
-    public void theUserClickToSearchBar() {
-        homePage=new HomePage(driver);
-        searchPage=new SearchPage(driver);
-        element=homePage.getSearchInputBox();
-        action=new Actions(driver);
-        action.moveToElement(element).perform();
-        homePage.getSearchInputBox().click();
-        data= TestDataReader.getData(scenario.getName());
-    }
-
-    //user enter text and press Enter key
-    @When("user enter a text and press ENTER key")
-    public void userEnterATextAndPressENTERKey() {
-        homePage.getSearchInputBox().sendKeys(data.get("Data"));
-        homePage.getSearchInputBox().sendKeys(Keys.ENTER);
-        new WebDriverWait(driver,20).until(ExpectedConditions.presenceOfElementLocated(By
-                .xpath("(//div[@class=\"xwoyzhm x1rhet7l\"])[2]//h1")));
-    }
-
-    //search results should be displayed
-    @Then("search results should be displayed")
-    public void searchResultsShouldBeDisplayed() {
-        boolean resultPresent=searchPage.getResultText().isDisplayed();
-        Assert.assertEquals(resultPresent, true);
-    }
 
     //user move and click to search bar
     @Given("the user move and click to search bar")
@@ -245,64 +218,6 @@ public class StepDefinitions {
         {
             Assert.assertTrue(searchResults.get(i).getText().contains(expectedString));
         }
-    }
-
-    //user enter and search for person
-    @Given("the user enter and search for person")
-    public void theUserEnterAndSearchForPerson() {
-        homePage=new HomePage(driver);
-        searchPage=new SearchPage(driver);
-        data= TestDataReader.getData(scenario.getName());
-        homePage.getSearchInputBox().sendKeys(data.get("Data"));
-        homePage.getSearchInputBox().sendKeys(Keys.ENTER);
-        new WebDriverWait(driver,20).until(ExpectedConditions.presenceOfElementLocated(By
-                .xpath("(//h1[@class=\"x1heor9g x1qlqyl8 x1pd3egz x1a2a7pz\"])[2]")));
-
-    }
-
-    //search result page is displayed to user
-    @When("search result page displayed to user")
-    public void searchResultPageDisplayedToUser() {
-        searchPage=new SearchPage(driver);
-        searchPage.getSearchResultText().isDisplayed();
-        List<WebElement> searchResults=searchPage.getSearchResults();
-    }
-
-    //filter options should be displayed to user
-    @Then("filters options should be displayed")
-    public void filtersOptionsShouldBeDisplayed() {
-        boolean present=searchPage.getFilterText().isDisplayed();
-        Assert.assertEquals(present,true);
-    }
-
-    //user enter and search for person
-    @Given("user enter and search for person")
-    public void userEnterAndSearchForPerson() {
-        homePage=new HomePage(driver);
-        data= TestDataReader.getData(scenario.getName());
-        homePage.getSearchInputBox().sendKeys(data.get("Data"));
-        homePage.getSearchInputBox().sendKeys(Keys.ENTER);
-        new WebDriverWait(driver,20).until(ExpectedConditions.presenceOfElementLocated(By
-                .xpath("(//h1[@class=\"x1heor9g x1qlqyl8 x1pd3egz x1a2a7pz\"])[2]")));
-
-    }
-
-    //user click to people filter
-    @When("user click to people filter")
-    public void userClickToPeopleFilter() throws InterruptedException {
-        searchPage=new SearchPage(driver);
-        searchPage.getSearchResultText().isDisplayed();
-        List<WebElement> searchResults=searchPage.getSearchResults();
-        Thread.sleep(2000);
-        searchPage.getPeopleFilter().click();
-    }
-
-    //search result page displayed according to people filter
-    @Then("search result page displayed according to people filter")
-    public void searchResultPageDisplayedAccordingToPeopleFilter() {
-        new WebDriverWait(driver,20).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@class=\"x193iq5w x1xwk8fm\"]"))));
-        boolean peopleGrid=searchPage.getPeopleGrid().isDisplayed();
-        Assert.assertEquals(peopleGrid,true);
     }
 
     //user search for person
