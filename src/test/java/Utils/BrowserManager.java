@@ -24,6 +24,7 @@ public class BrowserManager {
         options.addArguments("--disable-notifications");
         driver=new ChromeDriver(options);
         driver.manage().window().maximize();
+        driver.navigate().refresh();
         homePage=new HomePage(driver);
         loginPage=new LoginPage(driver);
         searchPage=new SearchPage(driver);
