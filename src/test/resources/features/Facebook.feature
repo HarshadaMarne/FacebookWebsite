@@ -5,7 +5,7 @@ Feature: User should able to search and select a desired person and people shoul
     When the user enter login credentials
     Then the user logged in to facebook website successfully
 
-
+    @smoke
     Scenario: Search bar should be display and visible to user
       Given the user is on home page
       When user navigate to search bar
@@ -46,7 +46,7 @@ Feature: User should able to search and select a desired person and people shoul
       When user click to people filter
       Then search result page displayed according to people filter
 
-    @smoke
+
     Scenario: Message button should be displayed to people who are friend of user
       Given user search for person
       When user navigates to search results
@@ -58,15 +58,15 @@ Feature: User should able to search and select a desired person and people shoul
       When search results is displayed
       Then add friend button should be displayed for people who are not a friend of user
 
-    @fast
+
     Scenario Outline: Profile page of selected person should be displayed to user
       Given user search for a desire person by "<SearchText>"
       When user click and select the a desire person name
       Then "<PersonName>" should be displayed on selected person's profile page
       Examples:
-        |SearchText       | PersonName       |
-        |omkar naik       | omkar naik       |
-        |shweta kalshetty | shweta kalshetty |
+        |SearchText       | PersonName    |
+        |omkar naik       | omkar naik    |
+        |kunal kumbhar    | kunal kumbhar |
 
 
 
