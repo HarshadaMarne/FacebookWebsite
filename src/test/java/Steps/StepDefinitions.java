@@ -72,6 +72,7 @@ public class StepDefinitions {
     @Then("the user logged in to facebook website successfully")
     public void theUserLoggedInToFacebookWebsiteSuccessfully() throws InterruptedException {
         homePage=new HomePage(driver);
+
 //        Wait wait=new FluentWait(driver)
 //                .withTimeout(40, TimeUnit.SECONDS)
 //                .pollingEvery(2,TimeUnit.SECONDS)
