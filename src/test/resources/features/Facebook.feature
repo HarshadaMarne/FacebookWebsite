@@ -5,7 +5,7 @@ Feature: User should able to search and select a desired person and people shoul
     When the user enter login credentials
     Then the user logged in to facebook website successfully
 
-    @smoke
+    @focus
     Scenario: Search bar should be display and visible to user
       Given the user is on home page
       When user navigate to search bar
@@ -36,13 +36,13 @@ Feature: User should able to search and select a desired person and people shoul
       When user navigates to search results
       Then message button should be displayed for people who are friend of user
 
-
+    @fast
     Scenario: Add friend button should be displayed to people who are not a friend of user
       Given user search for desire person
       When search results is displayed
       Then add friend button should be displayed for people who are not a friend of user
 
-
+    @smoke
     Scenario Outline: Profile page of selected person should be displayed to user
       Given user search for a desire person by "<SearchText>"
       When user click and select the a desire person name

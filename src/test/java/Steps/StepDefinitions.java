@@ -89,6 +89,8 @@ public class StepDefinitions {
     @Given("the user is on home page")
     public void theUserIsOnHomePage() {
         homePage=new HomePage(driver);
+        searchPage=new SearchPage(driver);
+        data= TestDataReader.getData(scenario.getName());
 //        String user=homePage.getUser().getText();
 //        Assert.assertEquals(user,"Harshada Marne");
         element=homePage.getSearchInputBox();
@@ -102,18 +104,17 @@ public class StepDefinitions {
     @When("user navigate to search bar")
     public void userNavigateToSearchBar() {
         homePage=new HomePage(driver);
-        iconPresent=homePage.getSearchInputBox().isDisplayed();
-        points =homePage.getSearchInputBox().getLocation();
+        homePage.getSearchInputBox().sendKeys(data.get("Data"));
+        homePage.getSearchInputBox().sendKeys(Keys.ENTER);
+        new WebDriverWait(driver,20).until(ExpectedConditions.presenceOfElementLocated(By
+                .xpath("(//h1[@class=\"x1heor9g x1qlqyl8 x1pd3egz x1a2a7pz\"])[3]")));
     }
 
     //search bar should be displayed to user
     @Then("the search bar should be displayed to user")
     public void theSearchBarShouldBeDisplayedToUser() {
-        Assert.assertEquals(iconPresent,true);
-        System.out.println(points.getX());
-        System.out.println(points.getY());
-        Assert.assertEquals(points.getX(),92);
-        Assert.assertEquals(points.getY(),8);
+        boolean resultPresent=searchPage.getResultText().isDisplayed();
+        Assert.assertEquals(resultPresent, true);
     }
 
     //user move to search bar
@@ -149,6 +150,7 @@ public class StepDefinitions {
         Assert.assertEquals(spellCheck,"true");
         Assert.assertEquals(value.length(),10);
         Assert.assertEquals(type,"text");
+
     }
 
     //user navigate to home page
