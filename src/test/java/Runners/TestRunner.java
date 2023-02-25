@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
         glue = "Steps", publish = true,
         plugin = {"pretty","html:target/cucumber-reports.html",
                 "json:target/Destination/cucumber.json"},
-        monochrome = true, tags = "@focus")
+        monochrome = true, tags = "@smoke")
 public class TestRunner extends AbstractTestNGCucumberTests {
 
 //    @Override
