@@ -64,7 +64,7 @@ public class StepDefinitions {
     public void theUserEnterLoginCredentials() {
         loginPage=new LoginPage(driver);
         loginPage.getUsername().sendKeys("8007391825");
-        loginPage.getPassword().sendKeys("India@11");
+        loginPage.getPassword().sendKeys("Harshada@25");
         loginPage.getLoginButton().click();
     }
 

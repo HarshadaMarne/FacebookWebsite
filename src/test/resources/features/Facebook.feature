@@ -24,7 +24,7 @@ Feature: User should able to search and select a desired person and people shoul
       When user click to search bar
       Then recent searches should be displayed to user
 
-
+  @smoke
     Scenario: Search results should be displayed relevant to search text to user
       Given the user move and click to search bar
       When user enter and search for a person
@@ -42,7 +42,7 @@ Feature: User should able to search and select a desired person and people shoul
       When search results is displayed
       Then add friend button should be displayed for people who are not a friend of user
 
-    @smoke
+
     Scenario Outline: Profile page of selected person should be displayed to user
       Given user search for a desire person by "<SearchText>"
       When user click and select the a desire person name
